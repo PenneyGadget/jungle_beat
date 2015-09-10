@@ -1,48 +1,87 @@
 require_relative 'node'
-
+require 'pry'
 class LinkedList
 
-  attr_accessor :head
+  attr_accessor :head, :data, :pointer
 
   def initialize(data)
     @head = Node.new(data)
   end
 
-  def append_node(data)
+  def empty?
+    @head == nil
+  end
+
+  def append(data)
     current = @head
     while current.pointer != nil
       current = current.pointer
     end
     current.pointer = Node.new(data)
   end
-  #
-   # def header_node(node) #prepend
-  #   if @head.nil?
-  #     @head = node
-  #     @tail = node
-  #   else
-  #     node.pointer = @head
-  #     @head = node
+
+  def prepend_list(data)
+    node = Node.new(data)
+    @head = node
+    node.pointer = @head
+  end
+
+  def insert
+
+  end
+
+  def delete
+
+  end
+
+  def includes?
+
+  end
+
+  def pop
+    current = @head
+    current
+    placeholder = @head
+    current.pointer
+    while current.pointer != nil
+      placeholder = current
+      current = current.pointer
+    end
+    placeholder.pointer = nil
+  end
+
+  # def count
+  #   count = 0
+  #   current = @head
+  #   while current.pointer != nil
+  #     count += 1
+  #     current = current.pointer
   #   end
+  #   count
   # end
+
+  def find #find one or more elements based on arbitrary positions in the list - first param = first position to return, second param = how many elements to return
+
+  end
+
+  def all #return all element in the list in order
+
+  end
 
 end
 
-# node1 = Node.new("beep")
-# node1.data
-# node1.pointer
+# list = LinkedList.new("bam")
+# list.head.data
+# list.head.pointer
 #
-# node2 = Node.new("bop", node1)
-# node2.data
-# node2.pointer
+# list.append("boing")
+# list.head.pointer
 #
-# node3 = Node.new("bam", node2)
-# node3.data
-# node3.pointer
+# list
 #
-# list = LinkedList.new(node3)
-# list.append_one_node("groovy")
-
-
-
-#think of it like this: node = (data, (data, (data, (data, ))))
+# list.prepend_list("boom")
+# list.head
+#
+# list
+#
+# list.pop

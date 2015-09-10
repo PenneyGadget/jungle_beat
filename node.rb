@@ -6,5 +6,3 @@ class Node
     @pointer = pointer
   end
 end
-
-Node.new("beep")
