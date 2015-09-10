@@ -106,19 +106,63 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_insert_a_node_in_the_middle_of_the_list
+    list = LinkedList.new("one")
+
+    node2 = list.append("two")
+    node3 = list.append("three")
+    list.insert("two_point_five", 2) #list.insert(data, position)
+
+    assert_equal "one two two_point_five three", list.all
+  end
+
+  def test_delete_the_header_node
     skip
   end
 
-  def test_remove_the_header_node
+  def test_delete_a_node_from_the_middle_of_the_list
     skip
   end
 
-  def test_remove_a_node_from_the_middle_of_the_list
-    skip
+  def test_find_if_the_list_includes_something
+    list = LinkedList.new("one")
+
+    list.append("two")
+    list.append("three")
+    list.append("four")
+
+    assert list.includes?("three")
+    refute list.includes?("five")
   end
 
-  def test_ask_if_the_list_includes_something
-    skip
+  def test_find_one_or_more_elements_based_on_an_arbitrary_starting_point
+    list = LinkedList.new("one")
+
+    list.append("two")
+    list.append("three")
+    list.append("four")
+    list.append("five")
+
+    assert_equal "two three", list.find(1, 2)
+  end
+
+  def test_count_the_number_of_items_in_the_list
+    list = LinkedList.new("one")
+
+    list.append("two")
+    list.append("three")
+    list.append("four")
+
+    assert_equal 4, list.count
+  end
+
+  def test_printing_all_items_in_the_list_in_order
+    list = LinkedList.new("one")
+
+    list.append("two")
+    list.append("three")
+    list.append("four")
+
+    assert_equal "one two three four", list.all
   end
 
 end

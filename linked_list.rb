@@ -12,6 +12,14 @@ class LinkedList
     @head == nil
   end
 
+  def find_tail
+    current = @head
+    while current.pointer != nil
+      current = current.pointer
+    end
+    current
+  end
+
   def append(data)
     current = @head
     while current.pointer != nil
@@ -26,23 +34,41 @@ class LinkedList
     node.pointer = @head
   end
 
-  def insert
+  def insert (data, position)
+    count = 0
+    current = @head
+    new_node = Node.new(data)
 
+    until count == position
+      count += 1
+      current = current.pointer
+    end
+    new_node.pointer = current
+
+    count = 0
+    current = @head
+    until count == position - 1
+      count += 1
+      current = current.pointer
+    end
+    current.pointer = new_node
   end
 
   def delete
 
   end
 
-  def includes?
-
+  def includes?(data)
+    current = @head
+    until current.data == data || current.pointer == nil
+      current = current.pointer
+    end
+    current.data == data
   end
 
   def pop
     current = @head
-    current
     placeholder = @head
-    current.pointer
     while current.pointer != nil
       placeholder = current
       current = current.pointer
@@ -50,38 +76,39 @@ class LinkedList
     placeholder.pointer = nil
   end
 
-  # def count
-  #   count = 0
-  #   current = @head
-  #   while current.pointer != nil
-  #     count += 1
-  #     current = current.pointer
-  #   end
-  #   count
-  # end
-
-  def find #find one or more elements based on arbitrary positions in the list - first param = first position to return, second param = how many elements to return
-
+  def count
+    count = 1
+    current = @head
+    while current.pointer != nil
+      current = current.pointer
+      count += 1
+    end
+    count
   end
 
-  def all #return all element in the list in order
+  def find (position, num_of_elements)
+    string = ""
+    count = 0
+    current = @head
+    until count == position
+      count += 1
+      current = current.pointer
+    end
+    num_of_elements.times do
+      string << current.data + " "
+      current = current.pointer
+    end
+    string.strip
+  end
 
+  def all
+    string = ""
+    current = @head
+    while current.pointer != nil
+      string << current.data + " "
+      current = current.pointer
+    end
+    string + find_tail.data
   end
 
 end
-
-# list = LinkedList.new("bam")
-# list.head.data
-# list.head.pointer
-#
-# list.append("boing")
-# list.head.pointer
-#
-# list
-#
-# list.prepend_list("boom")
-# list.head
-#
-# list
-#
-# list.pop
