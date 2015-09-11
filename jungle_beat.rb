@@ -15,10 +15,18 @@ class JungleBeat
   end
 
   def play
-    `say -r 500 -v Boing #{beats}`
+    `say -r 200 -v Boing #{beats}`
   end
 
 end
 
-# beats_file = ARGV[0]
-# beats = File.read(beats_file)
+running = ($PROGRAM_NAME = __FILE__)
+
+if running
+  input_file = ARGV[0]
+  beats_string = File.read(input_file)
+  sounds_count = beats_string.split.length
+
+  JungleBeat.new(beats_string).play
+  puts "Played #{sounds_count} sounds from #{input_file}"
+end
