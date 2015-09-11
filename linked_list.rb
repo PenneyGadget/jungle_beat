@@ -66,7 +66,7 @@ class LinkedList
     current.data == data
   end
 
-  def pop
+  def pop #this should pop however many items off the end we tell it to
     current = @head
     placeholder = @head
     while current.pointer != nil
