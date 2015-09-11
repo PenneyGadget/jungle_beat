@@ -95,14 +95,16 @@ class LinkedListTest < Minitest::Test
     assert_equal list.head.pointer.pointer, node3
   end
 
-  def test_pop_the_last_item_off_the_list
+  def test_pop_items_off_the_list
     list = LinkedList.new("beep")
 
     node2 = list.append("bop")
     node3 = list.append("thing")
-    removed = list.pop
+    node4 = list.append("yikes")
+    list.pop(2)
 
-    assert_nil node2.pointer
+    assert_equal "bop", list.find_tail.data
+    assert_equal "beep bop", list.all #this returns what's left insteaad of what was removed
   end
 
   def test_insert_a_node_in_the_middle_of_the_list

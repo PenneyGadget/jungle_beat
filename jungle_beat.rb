@@ -14,6 +14,9 @@ class JungleBeat
     end
   end
 
+  def play
+    `say -r 500 -v Boing #{beats}`
+  end
 
 end
 

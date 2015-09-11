@@ -34,7 +34,7 @@ class LinkedList
     node.pointer = @head
   end
 
-  def insert (data, position)
+  def insert(position, data)
     count = 0
     current = @head
     new_node = Node.new(data)
@@ -66,14 +66,17 @@ class LinkedList
     current.data == data
   end
 
-  def pop #this should pop however many items off the end we tell it to
-    current = @head
-    placeholder = @head
-    while current.pointer != nil
-      placeholder = current
-      current = current.pointer
+  def pop(num = 1)
+    string = ""
+    num.times do
+      current = @head
+      until current.pointer == find_tail
+        string << current.data + " "
+        current = current.pointer
+      end
+      current.pointer = nil
     end
-    placeholder.pointer = nil
+    string.strip
   end
 
   def count
