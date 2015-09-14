@@ -60,6 +60,7 @@ class LinkedListTest < Minitest::Test
     list.prepend_list("diggity")
 
     assert_equal "diggity", list.head.data
+    # assert_equal "boom", list.head.pointer.data
   end
 
   def test_does_the_list_prepend_two_things

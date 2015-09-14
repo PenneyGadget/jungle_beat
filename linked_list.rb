@@ -13,7 +13,7 @@ class LinkedList
   end
 
   def find_tail
-    current = @head
+    current = @head #rename current to current_head - use names that are more explicit
     while current.pointer != nil
       current = current.pointer
     end
@@ -29,6 +29,7 @@ class LinkedList
   end
 
   def prepend_list(data)
+    # node = Node.new(data, @head) // this would be a good way to change @head to the pointer
     node = Node.new(data)
     @head = node
     node.pointer = @head
@@ -78,6 +79,7 @@ class LinkedList
     end
     string.strip
   end
+  #set the items to be popped off to a variable before removing them and make that your return
 
   def count
     count = 1

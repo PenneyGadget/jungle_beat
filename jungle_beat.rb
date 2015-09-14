@@ -22,11 +22,12 @@ end
 
 running = ($PROGRAM_NAME = __FILE__)
 
-if running
-  input_file = ARGV[0]
-  beats_string = File.read(input_file)
-  sounds_count = beats_string.split.length
-
-  JungleBeat.new(beats_string).play
-  puts "Played #{sounds_count} sounds from #{input_file}"
-end
+# if running
+#   input_file = ARGV[0]
+#   beats_string = File.read(input_file)
+#   sounds_count = beats_string.split.length
+#
+#   JungleBeat.new(beats_string).play
+#   require "pry"; binding.pry
+#   # puts "Played #{sounds_count} sounds from #{input_file}"
+# end
